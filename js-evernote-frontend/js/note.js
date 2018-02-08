@@ -12,16 +12,16 @@ const Note = (function() {
       this.body = body;
     }
 
-    renderSidebar() {
+    renderSidebarNotes() {
       // console.log("rendering sidebar", this.renderBody)
 
       let noteItem = document.createElement("li");
-      noteItem.id = "note" + this.id
+      noteItem.id = "note" + this.id // confused here 
 
       noteItem.addEventListener('click', this.renderBody.bind(this))
 
       let noteTitle = document.createTextNode(this.title);
-      // console.log(this);
+      // console.log("sidebar", this);
 
       let noteBodyItem = document.createElement("SPAN");
       let noteBody = document.createTextNode(this.body.substring(0, 150) + "...");
@@ -44,7 +44,7 @@ const Note = (function() {
       // populate data
       let noteTitle = document.createElement('h3')
       noteTitle.innerHTML = this.title;
-      // console.log(this);
+      console.log("body", this);
 
       let noteBody = document.createElement('p')
       noteBody.innerHTML = this.body;
@@ -101,7 +101,7 @@ const Note = (function() {
 
       /// remove note from the sidebar
       /// if we run the code below, it removes the element from the sidebar, but messes up with the fetch method above, therefore note is not removed from the DB
-      
+
       // let sideNote = document.getElementById(`note${this.id}`)
       // sideNote.remove();
     }

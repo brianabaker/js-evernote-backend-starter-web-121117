@@ -17,7 +17,6 @@ const NoteApi = (function() {
         })
       })
       .then(res => res.json())
-      //.then(json => console.log(json));
     }
 
     static deleteNote(){

@@ -9,12 +9,10 @@ const App = (function() {
 
     static renderNotes() { //sidebar
       let noteContainer = document.getElementById("note-list");
-
       NoteApi.fetchNotes().then(notes => {
         notes.forEach(function(noteJSON){
           let note = new Note(noteJSON)
-
-          noteContainer.prepend(note.renderSidebar())
+          noteContainer.prepend(note.renderSidebarNotes())
         })
       });
     }
