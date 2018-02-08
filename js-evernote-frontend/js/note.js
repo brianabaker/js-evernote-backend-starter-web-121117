@@ -16,9 +16,11 @@ const Note = (function() {
       // console.log("rendering sidebar", this.renderBody)
 
       let noteItem = document.createElement("li");
-      noteItem.id = "note" + this.id // confused here 
+      noteItem.id = "note" + this.id // confused here
 
       noteItem.addEventListener('click', this.renderBody.bind(this))
+      //the first this binds it to the li
+      //the second one skips up to the parent
 
       let noteTitle = document.createTextNode(this.title);
       // console.log("sidebar", this);
@@ -29,7 +31,7 @@ const Note = (function() {
       noteItem.append(noteTitle);
       noteItem.append(noteBodyItem);
 
-      return noteItem;
+      return noteItem; //learn more about this
     }
 
     renderBody() {
@@ -44,7 +46,7 @@ const Note = (function() {
       // populate data
       let noteTitle = document.createElement('h3')
       noteTitle.innerHTML = this.title;
-      console.log("body", this);
+      // console.log("body", this);
 
       let noteBody = document.createElement('p')
       noteBody.innerHTML = this.body;
@@ -61,22 +63,6 @@ const Note = (function() {
       deleteNoteBtn.addEventListener('click', this.deleteNote.bind(this))
       toolbar.append(deleteNoteBtn)
 
-
-      // let fullNoteContainer = document.createElement("div");
-      // let showBody = document.querySelector("#full-note-body");
-      //
-      // let h1 = document.createElement("h1");
-      // let noteTitle = document.createTextNode(this.title);
-      // h1.append(noteTitle);
-      //
-      // let noteBody = document.createTextNode(this.body);
-      //
-      // fullNoteContainer.append(noteTitle);
-      // fullNoteContainer.append(noteBody);
-      // showBody.append(fullNoteContainer);
-
-      // return showBody;
-
     }
 
     deleteNote(e) {
@@ -90,20 +76,19 @@ const Note = (function() {
       content.innerHTML = ""
       toolbar.innerHTML = ""
 
+      /// remove note from the sidebar
+      let sideNote = document.getElementById(`note${this.id}`)
+      sideNote.remove();
+
       // delete the database entry
       fetch(`http://localhost:3000/api/v1/notes/${this.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          // "Accept": "application/json"
         }
       })
 
-      /// remove note from the sidebar
-      /// if we run the code below, it removes the element from the sidebar, but messes up with the fetch method above, therefore note is not removed from the DB
-
-      // let sideNote = document.getElementById(`note${this.id}`)
-      // sideNote.remove();
     }
 
 

@@ -29,7 +29,7 @@ const App = (function() {
         let noteContainer = document.getElementById("note-list");
         let note = new Note({ user_id: 1, title: noteTitle, body: noteBody });
 
-        noteContainer.prepend(note.renderSidebar());
+        noteContainer.prepend(note.renderSidebarNotes());
         noteTitleField.value = ""
         noteBodyField.value = ""
       })

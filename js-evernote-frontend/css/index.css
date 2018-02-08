@@ -17,9 +17,10 @@ ul li span {
 .form {
   margin: 14px 0 20px 40px;
 }
-/*
-.content{
-} */
+
+.pusher p {
+  margin-right: 100px;
+}
 
 #sidebar-h3 {
   margin-left: 40px;
